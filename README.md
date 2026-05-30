@@ -1,399 +1,270 @@
-# **MediGenius: AI-Powered Multi-Agent Medical Assistant**
+<div align="center">
 
-<p align="center">
-  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"></a>
-  <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"></a>
-  <a href="https://langchain.com/"><img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain"></a>
-  <a href="https://langchain-ai.github.io/langgraph/"><img src="https://img.shields.io/badge/LangGraph-2C3E50?style=for-the-badge&logoColor=white" alt="LangGraph"></a>
-  <a href="https://groq.com/"><img src="https://img.shields.io/badge/Groq-f55036?style=for-the-badge&logoColor=white" alt="Groq"></a>
-</p>
+# 🏥 CareAgent
+### 面向慢病管理的多 Agent 医疗问诊系统
 
-<p align="center">
-  <a href="https://huggingface.co/"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-FFD21E?style=for-the-badge&logoColor=white" alt="Hugging Face"></a>
-  <a href="https://www.trychroma.com/"><img src="https://img.shields.io/badge/ChromaDB-0052cc?style=for-the-badge&logoColor=white" alt="ChromaDB"></a>
-  <a href="https://scikit-learn.org/"><img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-learn"></a>
-  <a href="https://pandas.pydata.org/"><img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas"></a>
-  <a href="https://numpy.org/"><img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy"></a>
-</p>
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-FF6B6B?style=for-the-badge&logo=graph&logoColor=white)
+![通义千问](https://img.shields.io/badge/通义千问-FF6A00?style=for-the-badge&logo=alibaba-cloud&logoColor=white)
 
-<p align="center">
-  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"></a>
-  <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite"></a>
-  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind"></a>
-  <a href="https://daisyui.com/"><img src="https://img.shields.io/badge/daisyUI-5AD7E4?style=for-the-badge&logoColor=black" alt="daisyUI"></a>
-  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"></a>
-</p>
+![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-FF4785?style=for-the-badge&logo=database&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)
 
-**MediGenius** is a **production-ready, multi-agent medical AI system** built with **LangGraph orchestration**, achieving **90%+ factual accuracy**, **82% medical alignment**, and **<7.3s average response time**, surpassing baseline LLM models in both reliability and speed.
-
-The system employs **Planner, Retriever, Answer Generator, Tool Router**, and **Fallback Handler Agents** that coordinate intelligently across diverse tools — combining **medical RAG from verified PDFs**, and **fallback web searches** to ensure accuracy even when the LLM falters.
-
-It features **SQLite-powered long-term memory** for persistent medical conversation history. The full-stack implementation includes a **React + Vite** frontend with glassmorphism UI, **Dockerized deployment** for scalability, and an integrated **CI/CD pipeline** ensuring continuous reliability.
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 ---
 
-[![Project demo video](https://github.com/user-attachments/assets/d491cf14-a7b0-4fce-804e-b174da779f7a)](https://github.com/user-attachments/assets/d491cf14-a7b0-4fce-804e-b174da779f7a)
+**CareAgent** 是一个面向老年人的中文医疗问诊系统，基于 **LangGraph 五节点多 Agent 编排**，结合 **RAG 检索增强生成**，支持症状咨询、风险分层、患者画像记忆与慢病指标管理。在原有开源框架基础上进行系统性中文化改造，RAG 检索命中率从 **0% 提升至 100%**，并新增慢病管理模块。
 
-<img width="1366" height="614" alt="Image" src="https://github.com/user-attachments/assets/4b5dd09d-3c0d-4caa-9c27-120b1c0b8026" />
-
-<img width="1366" height="614" alt="Image" src="https://github.com/user-attachments/assets/03376e11-32fd-45a9-a9ec-baa6ff8468d6" />
+</div>
 
 ---
 
-## **Live Demo**
+## 📊 核心指标
 
-You can interact with the live AI-powered medical assistant here: [https://medigenius.onrender.com/](https://medigenius.onrender.com/)
+<div align="center">
 
----
+| 指标 | 数值 | 说明 |
+|:----:|:----:|:----:|
+| 🗃️ 中文医疗知识库 | **2211 条** | 从 Huatuo-26M 5000 条筛选 |
+| 🎯 RAG 检索命中率 | **100%** | 修复前为 0% |
+| ⚡ 平均响应时间 | **4.79 秒** | qwen-max API |
+| 📋 慢病指标类型 | **5 类** | 血压/血糖/心率/体重/用药 |
 
-## **Performance Evaluation & Benchmarking**
-
-| **Metrics**               | **MediGenius (Your Model)** | **LLaMA 3.1 70B**                                                                                                                                |
-| ------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Success Rate**          | **80–94 %**                 | **79–90 %** ([PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0325803))                                            |
-| **Average Response Time** | **7.23 seconds**            | **22.8 seconds** ([PMC Study](https://pmc.ncbi.nlm.nih.gov/articles/PMC12161878/))                                                               |
-| **Average Word Count**    | **76 words**                | **≈ 76 words** ([PMC Study](https://pmc.ncbi.nlm.nih.gov/articles/PMC12161878/))                                                                 |
-| **Medical Terms Usage**   | **80.0 %**                  | **80.0 %** ([Reddit Community Analysis](https://www.reddit.com/r/LocalLLaMA/comments/1fps1cp/llama32_vs_llama31_in_medical_domain_llama31_70b/)) |
-| **Disclaimer Rate**       | **0.0 %**                   | **0.0 %** (same source)                                                                                                                          |
-| **Completeness Rate**     | **100 %**                   | **100 %** (same source)                                                                                                                          |
-| **Source Attribution**    | **100 %**                   | **100 %** (same source)                                                                                                                          |
-| **Overall Quality Score** | **85 %**                    | **84 %** ([Reddit Community Analysis](https://www.reddit.com/r/LocalLLaMA/comments/1fps1cp/llama32_vs_llama31_in_medical_domain_llama31_70b/))   |
+</div>
 
 ---
 
-## **Real-World Use Cases**
+## 🏗️ 系统架构
 
-1. **Rural Health Access**
-   Providing preliminary medical advice in rural or underserved areas where certified doctors may not be immediately available.
-
-2. **Mental Health First Aid**
-   Offering supportive conversations for users dealing with stress, anxiety, or medical confusion.
-
-3. **Patient Pre-screening**
-   Collecting and analyzing symptoms before a user visits a doctor, reducing clinical workload.
-
-4. **Home Care Guidance**
-   Guiding patients and caregivers on medication usage, symptoms, or recovery advice.
-
-5. **Educational Assistant**
-   Helping medical students or patients understand medical topics in simpler language.
-
----
-
-## **Features**
-
-* **Doctor-like medical assistant** with empathetic, patient-friendly communication
-* **LLM-powered primary response** engine using ChatGroq (GPT-OSS-120B)
-* **RAG (Retrieval-Augmented Generation)** from indexed medical PDFs using PyPDFLoader + HuggingFace Embeddings + ChromaDB
-* **Planner Agent** for intelligent tool selection and decision-making
-* **Wikipedia fallback** for general medical knowledge retrieval
-* **DuckDuckGo fallback** for up-to-date or rare medical information
-* **Vector database (ChromaDB)** with persistent cosine-similarity search
-* **Multi-agent orchestration** via LangGraph with Planner, Retriever, Executor, and Explanation agents
-* **(SQLite)Long Term Memory** for context-aware responses
-* **Dynamic fallback chain** ensuring robust answers even in edge cases
-* **Conversation logging** for traceability and debugging
-* **Production-ready modular design** for integration into healthcare chat systems
-* **Rest API** for integration with other systems
-* **Dockerized deployment** for consistent environment and easy scaling
-* **FastAPI backend** with **React, Tailwind CSS 4, DaisyUI 5** frontend for smooth UX
-* **CI/CD pipeline integration** for automated testing and deployment
-
----
-
-## **Technical Stack**
-
-| **Category**               | **Technology/Resource**                                                                                   |
-|----------------------------|----------------------------------------------------------------------------------------------------------|
-| **Core Framework**         | LangChain, LangGraph                                                                                      |
-| **Multi-Agent Orchestration** | Planner Agent, LLM Agent, Retriever Agent, Wikipedia Agent, DuckDuckGo Agent, Executor Agent, Explanation Agent |
-| **LLM Provider**           | Groq (GPT-OSS-120B)                                                                                      |
-| **Embeddings Model**       | HuggingFace (sentence-transformers/all-MiniLM-L6-v2)                                                     |
-| **Vector Database**        | ChromaDB (cosine similarity search)                                                                      |
-| **Document Processing**    | PyPDFLoader (PDF), RecursiveCharacterTextSplitter                                                        |
-| **Search Tools**           | Wikipedia API, DuckDuckGo Search                                                                          |
-| **Conversation Flow**      | State Machine (LangGraph) with multi-stage fallback logic                                                |
-| **Medical Knowledge Base** | Domain-specific medical PDFs + Wikipedia medical content                                                 |
-| **Backend**                | FastAPI (REST API + application logic)                                                                     |
-| **Frontend**               | React 19, Vite 7, Tailwind CSS 4, DaisyUI 5                                                                |
-| **Deployment**             | Docker (containerized), Local Development, Production-ready build                                        |
-| **CI/CD**                  | GitHub Actions (automated testing & deployment)                                                          |
-| **Environment Management** | python-dotenv (environment variables)                                                                    |
-| **Logging & Monitoring**   | Console + file logging with full traceback                                                               |
-| **Hosting**                | Render                                                                                                   |
-
----
-
-## **Project File Structure**
-
-```text
-MediGenius/
-├── .github/
-│   └── workflows/
-│       └── ci-cd.yml             # GitHub Actions CI/CD Pipeline
-├── backend/
-│   ├── app/
-│   │   ├── agents/               # LangGraph Agent logic
-│   │   │   ├── __init__.py
-│   │   │   ├── executor.py
-│   │   │   ├── explanation.py
-│   │   │   ├── llm_agent.py
-│   │   │   ├── memory.py
-│   │   │   ├── planner.py
-│   │   │   ├── retriever.py
-│   │   │   ├── tavily.py
-│   │   │   └── wikipedia.py
-│   │   ├── api/                  # API Layer
-│   │   │   ├── v1/               # Versioned API (v1)
-│   │   │   │   ├── endpoints/    # Modular endpoint logic
-│   │   │   │   │   ├── __init__.py
-│   │   │   │   │   ├── chat.py
-│   │   │   │   │   ├── health.py
-│   │   │   │   │   └── session.py
-│   │   │   │   ├── api.py        # Router aggregator
-│   │   │   │   └── __init__.py
-│   │   │   └── __init__.py
-│   │   ├── core/                 # Core configurations
-│   │   │   ├── __init__.py
-│   │   │   ├── config.py
-│   │   │   ├── langgraph_workflow.py
-│   │   │   ├── logging_config.py
-│   │   │   └── state.py
-│   │   ├── db/                   # Database Session Management
-│   │   │   ├── __init__.py
-│   │   │   └── session.py
-│   │   ├── models/               # SQLAlchemy Models
-│   │   │   ├── __init__.py
-│   │   │   └── message.py
-│   │   ├── schemas/              # Pydantic Schemas
-│   │   │   ├── __init__.py
-│   │   │   ├── chat.py
-│   │   │   └── session.py
-│   │   ├── services/             # Business Logic Services
-│   │   │   ├── __init__.py
-│   │   │   ├── chat_service.py
-│   │   │   └── database_service.py
-│   │   ├── storage/              # Persistent Data
-│   │   │   ├── chat_db/          # SQLite Database
-│   │   │   └── vector_store/     # ChromaDB Vector Store
-│   │   ├── tools/                # Agentic Tools (RAG, Search)
-│   │   │   ├── __init__.py
-│   │   │   ├── duckduckgo_search.py
-│   │   │   ├── llm_client.py
-│   │   │   ├── pdf_loader.py
-│   │   │   ├── tavily_search.py
-│   │   │   ├── vector_store.py
-│   │   │   └── wikipedia_search.py
-│   │   ├── main.py               # Application Entry Point
-│   │   └── __init__.py
-│   ├── data/                     # Data Sources
-│   │   └── medical_book.pdf      # Source PDF
-│   ├── database/                 # Production Data (Git Ignored)
-│   │   ├── medigenius.db         # SQLite DB
-│   │   └── medical_db/           # ChromaDB Vector Store
-│   ├── logs/                     # Rotation Logs
-│   ├── tests/                    # Backend Test Suite
-│   │   ├── test_database/        # Isolated Test DB
-│   │   │   └── ...               # Migration scripts
-│   │   ├── conftest.py           # Pytest Fixtures
-│   │   ├── pytest.ini            # Pytest Config
-│   │   ├── test_agents.py
-│   │   ├── test_api.py           # v1 API integration tests
-│   │   ├── test_database.py
-│   │   ├── test_logging.py
-│   │   ├── test_services.py
-│   │   └── test_workflow.py
-│   ├── Dockerfile                # Multi-stage Backend Build
-│   ├── pyproject.toml            # Tooling Config (isort, etc.)
-│   └── requirements.txt          # Python Dependencies
-├── frontend/
-│   ├── public/                   # Static sensitive assets
-│   ├── src/
-│   │   ├── App.jsx               # Main UI Orchestrator (Single-file component architecture)
-│   │   ├── App.test.jsx          # Vitest Integration tests
-│   │   ├── index.css             # Tailwind 4 Custom Styles
-│   │   ├── index.jsx             # React Entry Point
-│   │   └── setupTests.js         # Vitest Config
-│   ├── Dockerfile                # Production Nginx Build
-│   ├── nginx.conf                # Proxy & Routing Config
-│   ├── package.json              # Node Dependencies
-│   ├── postcss.config.js         # Tailwind v4 Compatibility
-│   ├── tailwind.config.js        # Theme Presets
-│   └── vite.config.js            # Build & Proxy Config
-├── notebook/                     # Research & Development
-│   ├── Fine Tuning LLM.ipynb
-│   ├── Model Train.ipynb
-│   └── experiment.ipynb
-├── demo-1.png                    # Demo Screenshot 1
-├── demo-2.png                    # Demo Screenshot 2
-├── demo.mp4                      # Demo Video
-├── docker-compose.yml            # Unified Stack Orchestration
-├── run.py                        # Unified Local Dev Script
-├── render.yml                    # Cloud Deployment Manifest
-└── LICENSE                       # MIT License
+```
+用户输入
+    │
+    ▼
+┌─────────────────┐
+│  Memory Agent   │  ← 裁剪历史 + 提取患者画像（病史/用药/过敏）
+└────────┬────────┘
+         │
+    ▼
+┌─────────────────┐
+│  Planner Agent  │  ← 中文关键词路由决策（RAG 或直接回答）
+└────────┬────────┘
+         │
+    ┌────┴────┐
+    ▼         ▼
+┌────────┐ ┌──────────┐
+│RAG路线 │ │直接回答  │
+│Retriever│ │LLM Agent │
+└────┬───┘ └────┬─────┘
+     └────┬─────┘
+          ▼
+┌─────────────────┐
+│ Executor Agent  │  ← ⭐ 四项优化核心节点
+└────────┬────────┘
+         │
+    ▼
+┌─────────────────┐
+│Explanation Agent│  ← 后处理（可扩展）
+└────────┬────────┘
+         │
+    ▼
+   最终回答
 ```
 
 ---
 
-## **Project Architecture**
+## ⭐ 核心创新
 
-```mermaid
-graph TD
-    A[User Query] --> B[MemoryAgent - SQLite Recall]
-    B --> C[PlannerAgent - Keyword + Intent Decision]
+### 1️⃣ 中文医疗知识库构建
 
-    C -->|Medical Keywords| D[RetrieverAgent - RAG Pipeline]
-    C -->|No Keywords| E[LLMAgent - Reasoning]
+```python
+# 双层关键词过滤策略
+STRONG_KEYWORDS = ["高血压", "糖尿病", "冠心病", "老年痴呆", ...]  # 命中即保留
+GENERAL_KEYWORDS = ["血糖", "血压", "护理", ...]                   # 需命中 2 个以上
 
-    D --> F{RAG Success?}
-    F -->|Yes| G[ExecutorAgent]
-    F -->|No| H[WikipediaAgent]
+# 筛选结果：5000 条 → 2211 条老年人专项问答
+# RAG 命中率：0%（修复前）→ 100%（修复后）
+```
 
-    E --> I{LLM Confidence High?}
-    I -->|Yes| G
-    I -->|No| D
+### 2️⃣ ExecutorAgent 四项优化
 
-    H --> J{Wikipedia Success?}
-    J -->|Yes| G
-    J -->|No| K[TavilyAgent - Web Search]
+**① RAG 置信度过滤**
+```python
+# 置信度 = 有效文档数 / 期望文档数（3）
+state["rag_confidence"] = len(valid_docs) / 3.0
 
-    K --> G
-    G --> L[ExplanationAgent - Optional Summary]
-    L --> M[Final Answer Returned]
-    M --> N[MemoryAgent - Store to SQLite]
+# 低于阈值时拒绝生成，转为追问
+if confidence < 0.4:
+    return "我需要更多信息，您能描述一下具体症状吗？"
+```
 
-    style A fill:#ff9,stroke:#333
-    style B fill:#fdf6b2,stroke:#333
-    style C fill:#c9f,stroke:#333
-    style D fill:#a0e3a0,stroke:#333
-    style E fill:#9fd4ff,stroke:#333
-    style H fill:#ffe599,stroke:#333
-    style K fill:#ffbdbd,stroke:#333
-    style G fill:#f9f,stroke:#333
-    style L fill:#d7aefb,stroke:#333
-    style N fill:#b3f7f7,stroke:#333
+**② 患者画像跨轮记忆**
+```python
+# 每 6 条消息自动提取患者画像
+merged_profile = {
+    "diseases":    list(set(old + new)),  # 合并而非覆盖
+    "medications": list(set(old + new)),
+    "allergies":   list(set(old + new)),
+    "symptoms":    list(set(old + new)),
+    "age":         new_age or old_age,
+}
+# 画像注入每次回答的 prompt，实现个性化问诊
+```
+
+**③ 模糊输入自动追问**
+```
+用户："我不舒服"
+  ↓
+Agent 判断：信息不足，触发追问
+  ↓
+回复："您是哪里不舒服呢，是头痛、胸口，还是肚子？"
+（每次只问一个问题，猜测+确认方式）
+```
+
+**④ 回答长度自适应**
+```python
+is_simple = len(question) < 15 or any(
+    kw in question for kw in ["谢谢", "好的", "你好"]
+)
+# 简单问题 → 1-2 句
+# 复杂病情 → 结构化分点分析
+```
+
+### 3️⃣ 老年人专项 Prompt 设计
+
+```
+回答结构：
+【可能的原因】
+  - 常见情况：通俗解释症状原因
+  - 需要注意：更严重的可能性
+
+【建议做法】
+  - 居家处理方案
+  - 就医建议（挂哪个科）
+
+【何时立即就医】
+  🚨 出现【关键危险症状】时立即拨打 120
+```
+
+### 4️⃣ 慢病管理模块（新增）
+
+```python
+# SQLAlchemy 数据模型 —— 单表统一存储五类指标
+class HealthRecord(Base):
+    record_type = Column(String)   # blood_pressure / blood_sugar / heart_rate / weight / medication
+    value1      = Column(Float)    # 主要数值（收缩压/血糖/心率/体重）
+    value2      = Column(Float)    # 次要数值（舒张压专用）
+    unit        = Column(String)   # mmHg / mmol/L / bpm / kg
+    note        = Column(String)   # 备注（用药记录用）
+    recorded_at = Column(DateTime)
+
+# RESTful API 接口
+POST /api/v1/chronic/record          # 记录指标
+GET  /api/v1/chronic/records/{type}  # 查询历史（最近30条）
+GET  /api/v1/chronic/summary         # 获取汇总（供 Agent 读取）
 ```
 
 ---
 
-## **Real-World Use Cases**
+## 🆚 与原项目对比
 
-1. **Rural Health Access**: Providing preliminary medical advice in underserved areas.
-2. **Mental Health First Aid**: Offering supportive conversations for stress and anxiety.
-3. **Patient Pre-screening**: Analyzing symptoms before clinical visits.
-4. **Home Care Guidance**: Advice on medication usage and recovery.
+| 改进点 | 原项目（MediGenius）| CareAgent |
+|--------|-------------------|-----------|
+| 知识库语言 | 英文 PDF | 中文医疗问答（Huatuo-26M）|
+| 路由关键词 | 全英文 | 中英文双语，覆盖五大类 |
+| RAG 命中率 | 0%（中文问题）| **100%** |
+| 置信度过滤 | ❌ | ✅ 阈值 < 0.4 转追问 |
+| 患者画像记忆 | ❌ 仅裁剪历史 | ✅ 结构化提取与累积 |
+| 自动追问 | ❌ | ✅ 单问题猜测+确认 |
+| 回答长度控制 | ❌ 固定 2-4 句 | ✅ 自适应 |
+| 慢病管理模块 | ❌ | ✅ 五类指标+趋势图 |
+| 面向人群 | 通用 | 老年人专项优化 |
 
 ---
 
-## **Getting Started**
+## 🚀 快速启动
 
-### **1. Prerequisites**
-- **Python**: 3.10 or higher
-- **Node.js**: 18+ (for frontend)
-- **API Keys**: 
-  - `GROQ_API_KEY` (Get from [Groq Console](https://console.groq.com/))
-  - `TAVILY_API_KEY` (Get from [Tavily AI](https://tavily.com/))
+### 环境要求
+- Python 3.10+
+- Node.js 18+
 
-### **2. Environment Setup**
-Create a `.env` file in the root directory:
-```env
-GROQ_API_KEY=your_key_here
-TAVILY_API_KEY=your_key_here
+### 1. 克隆项目
+```bash
+git clone https://github.com/yyy101204/Care-Agent.git
+cd Care-Agent
+```
+
+### 2. 配置环境变量
+```bash
+# 在项目根目录创建 .env 文件
+DASHSCOPE_API_KEY=你的阿里云百炼API Key   # https://bailian.console.aliyun.com
+TAVILY_API_KEY=你的Tavily API Key          # https://tavily.com（免费）
 DATABASE_URL=sqlite:///./backend/database/medigenius.db
 ```
 
----
-
-## **Running the Project**
-
-### **Option 1: Unified Local Run (Recommended for Dev)**
-We provide a helper script to launch both backend and frontend simultaneously:
-```bash
-python run.py
-```
-- **Backend API**: `http://localhost:8000` (Docs: `/docs`)
-- **Frontend UI**: `http://localhost:5173`
-
-### **Option 2: Manual Run**
-**Backend:**
+### 3. 启动后端
 ```bash
 cd backend
+pip install -r requirements.txt
 python -m uvicorn app.main:app --reload
+# 后端运行在 http://localhost:8000
+# API 文档：http://localhost:8000/docs
 ```
 
-**Frontend:**
+### 4. 启动前端
 ```bash
 cd frontend
 npm install
 npm run dev
+# 前端运行在 http://localhost:5173
 ```
-
-### **Option 3: Docker Orchestration (Recommended for Prod)**
-Use Docker for a production-grade containerized environment:
-```bash
-# Build and start all services
-docker-compose up --build
-```
-*Docker ensures that Python dependencies, Nginx proxying, and volume persistence for ChromaDB/SQLite are handled automatically.*
 
 ---
 
-## **Testing and QA**
+## 📁 项目结构
 
-### **Backend Coverage**
-The backend features a robust test suite using `pytest`.
-```bash
-cd backend
-# Run all tests
-python -m pytest tests/
-
-# Check coverage report
-python -m pytest --cov=app tests/ --cov-report=term-missing
+```
+Care-Agent/
+├── backend/
+│   ├── app/
+│   │   ├── agents/
+│   │   │   ├── memory.py        # 患者画像记忆（升级版）
+│   │   │   ├── planner.py       # 中文关键词路由
+│   │   │   ├── retriever.py     # 置信度计算
+│   │   │   ├── executor.py      # 四项优化核心节点
+│   │   │   ├── llm_agent.py
+│   │   │   └── explanation.py
+│   │   ├── api/v1/endpoints/
+│   │   │   ├── chat.py
+│   │   │   ├── chronic.py       # 慢病管理 API（新增）
+│   │   │   └── session.py
+│   │   ├── core/
+│   │   │   ├── langgraph_workflow.py
+│   │   │   └── state.py         # 含 patient_profile / rag_confidence
+│   │   ├── models/
+│   │   │   └── health_record.py # 慢病数据模型（新增）
+│   │   └── tools/
+│   │       ├── llm_client.py    # 通义千问适配
+│   │       └── vector_store.py
+│   └── data/
+│       ├── chinese_medical.pdf  # 中文医疗知识库
+│       └── build_chinese_pdf.py # 知识库构建脚本
+├── frontend/
+│   └── src/
+│       └── App.jsx              # 含慢病管理页面和趋势图
+├── index.html                   # GitHub Pages 展示页
+└── README.md
 ```
 
-### **Frontend Testing**
-The frontend uses `vitest` for component testing.
-```bash
-cd frontend
-# Run frontend tests
-npm run test
-```
-
-### **Code Quality**
-We strictly enforce code standards:
-- **Linting**: `flake8 app/ tests/`
-- **Import Sorting**: `isort app/ tests/` (Automatically organized)
-- **Zero-Log Policy**: Tests are configured to suppress `.log` file creation to keep the workspace clean.
-
 ---
 
-## **CI/CD & DevOps**
+## 📄 License
 
-### **GitHub Actions**
-The project includes a pre-configured CI/CD pipeline (`.github/workflows/ci-cd.yml`) that triggers on every push or pull request to the **`master`** branch.
-- **Backend Tests**: Runs `pytest` with coverage.
-- **Frontend Tests**: Runs `vitest`.
-- **Code Quality**: Verifies `flake8` and `isort` compliance.
-- **Docker Build**: Validates the Docker image build process for both components.
-
-### **Cloud Deployment (Render)**
-Ready for one-click deployment via `render.yml`:
-- **Backend**: Deployed as a Web Service.
-- **Frontend**: Deployed as a Static Site.
-- **Database**: Persistent disk attached for SQLite storage.
-
----
-
-## **Developed By**
-
-**Md Emon Hasan**  
-**Email:** emon.mlengineer@gmail.com 
-**WhatsApp:** [+8801834363533](https://wa.me/8801834363533)  
-**GitHub:** [Md-Emon-Hasan](https://github.com/Md-Emon-Hasan)  
-**LinkedIn:** [Md Emon Hasan](https://www.linkedin.com/in/md-emon-hasan-695483237/)  
-**Facebook:** [Md Emon Hasan](https://www.facebook.com/mdemon.hasan2001/)
-
----
-
-## License
-MIT License. Free to use with credit.
+MIT License — 基于 [MediGenius](https://github.com/Md-Emon-Hasan/MediGenius) 开源框架进行二次开发
